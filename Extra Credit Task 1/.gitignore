@@ -1,0 +1,22 @@
+# GCP service account keys — never commit
+aibm-492318-*.json
+*-service-account*.json
+key.json
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+
+# Claude memory
+memory/
+
+# OS
+.DS_Store
+Thumbs.db

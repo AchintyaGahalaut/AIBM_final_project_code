@@ -1,0 +1,16 @@
+FROM python:3.13-slim
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir uv && \
+    uv pip install --system --no-cache "langflow==1.9.0"
+
+COPY AIBM_Mk2.json /app/flows/AIBM_Mk2.json
+
+ENV LANGFLOW_AUTO_LOGIN=true \
+    LANGFLOW_LOAD_FLOWS_PATH=/app/flows \
+    GOOGLE_APPLICATION_CREDENTIALS=/var/secrets/google/key.json
+
+EXPOSE 7860
+
+CMD ["langflow", "run", "--host", "0.0.0.0", "--port", "7860"]

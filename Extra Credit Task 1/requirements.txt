@@ -1,0 +1,4 @@
+streamlit
+requests
+langflow>=1.5
+uvicorn

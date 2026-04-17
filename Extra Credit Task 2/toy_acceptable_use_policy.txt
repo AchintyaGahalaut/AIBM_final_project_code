@@ -1,0 +1,289 @@
+company_name CORPORATION
+ACCEPTABLE USE POLICY FOR AI SYSTEMS AND DATA HANDLING
+Version 2.1 | Effective Date: January 2026
+
+==============================================================================
+SECTION 1: GENERAL PRINCIPLES
+==============================================================================
+
+1.1 Purpose
+This policy establishes guidelines for the responsible use of artificial intelligence tools, large language models (LLMs), and data handling practices to protect company_name Corporation's proprietary information, customer data, and intellectual property.
+
+1.2 Scope
+This policy applies to all employees, contractors, interns, and third-party vendors who handle company_name data or use AI tools in the course of their work.
+
+==============================================================================
+SECTION 2: EXTERNAL AI TOOL USAGE
+==============================================================================
+
+Protocol 2.1: Public AI System Restrictions
+Employees are PROHIBITED from uploading, sharing, or inputting the following data types into public AI systems (including but not limited to ChatGPT, Claude, Gemini, Copilot without enterprise license):
+- Internal project roadmaps or strategic planning documents
+- Customer lists, contact information, or account details
+- Financial reports, budgets, or revenue projections
+- Source code, proprietary algorithms, or technical specifications
+- Employee performance reviews or HR records
+- Unreleased product designs or features
+- Merger & acquisition discussions or sensitive business negotiations
+
+VIOLATION SEVERITY: CRITICAL
+CONSEQUENCE: Immediate security review, potential termination
+
+Protocol 2.2: Approved AI Tools
+The following AI systems are approved for use with company_name internal data:
+- company_name Secure Copilot (internal deployment on Azure)
+- company_name Policy Assistant (Langflow-based internal agent)
+- Microsoft 365 Copilot (Enterprise tenant only)
+
+Protocol 2.3: Summary and Analysis Requests
+When employees need to summarize or analyze internal documents:
+- APPROVED: Use company_name Secure Copilot at https://ai.company_name-internal.com
+- APPROVED: Use the Data Redaction Tool at https://redact.company_name-internal.com before external AI use
+- PROHIBITED: Direct upload of unredacted internal documents to public AI systems
+
+==============================================================================
+SECTION 3: DATA CLASSIFICATION AND HANDLING
+==============================================================================
+
+Protocol 3.1: Data Classification Levels
+company_name uses a three-tier classification system:
+
+TIER 1 - PUBLIC: Information already publicly available (press releases, public website content)
+TIER 2 - INTERNAL: General business information (meeting notes without sensitive details, non-confidential presentations)
+TIER 3 - CONFIDENTIAL: Proprietary or sensitive information (customer data, financial records, strategic plans)
+
+Protocol 3.2: Confidential Data Handling
+TIER 3 data must NEVER be:
+- Sent via personal email accounts
+- Uploaded to personal cloud storage (Dropbox, Google Drive personal accounts)
+- Shared in public Slack channels or external collaboration tools
+- Used as training examples for external AI systems
+- Discussed in detail on public forums or social media
+
+APPROVED ALTERNATIVE: Use company_name SharePoint with DLP enabled, or company_name Secure File Transfer
+
+==============================================================================
+SECTION 4: PROPRIETARY INFORMATION AND IP PROTECTION
+==============================================================================
+
+Protocol 4.1: Source Code and Technical Documentation
+Employees may NOT:
+- Upload company_name source code to GitHub Copilot, ChatGPT, or other code completion tools without approval
+- Share API keys, credentials, or system architecture diagrams externally
+- Request debugging assistance from public AI using actual production code
+
+APPROVED ALTERNATIVE: Use company_name DevSecure (GitHub Copilot Enterprise) with code scanning enabled
+
+Protocol 4.2: Proprietary Data Handling
+Internal project roadmaps, product launch plans, and strategic initiatives are classified as TIER 3 - CONFIDENTIAL.
+- Summarization requests must use company_name Secure Copilot
+- External consultants must sign NDA before accessing this data
+- Redaction is REQUIRED before any external sharing
+
+VIOLATION EXAMPLE: "Can I use ChatGPT to summarize this internal project roadmap?"
+VIOLATION: YES - Protocol 4.2
+APPROVED ALTERNATIVE: Use company_name Secure Copilot or company_name Data Redaction Tool first
+
+Protocol 4.3: Competitive Intelligence
+Employees conducting competitive research may use public AI tools for analysis of publicly available competitor information only. company_name's internal competitive strategy documents remain TIER 3 - CONFIDENTIAL.
+
+==============================================================================
+SECTION 5: CUSTOMER AND PERSONAL DATA PROTECTION
+==============================================================================
+
+Protocol 5.1: PII and Customer Data
+Personal Identifiable Information (PII) includes:
+- Customer names, email addresses, phone numbers
+- Social Security Numbers, credit card information
+- Medical records, health information
+- Demographic data tied to individuals
+
+PII must NEVER be input into public AI systems without anonymization.
+
+APPROVED ALTERNATIVE: Use the company_name Anonymization Engine at https://anonymize.company_name-internal.com
+
+Protocol 5.2: HIPAA and Regulatory Compliance
+For healthcare-related projects, all data must comply with HIPAA regulations:
+- Patient data must be de-identified per HIPAA Safe Harbor method
+- Use only HIPAA-compliant AI tools (company_name Health Analytics Platform)
+- External AI use with patient data is STRICTLY PROHIBITED
+
+Protocol 5.3: GDPR and International Data Transfers
+European customer data is subject to GDPR:
+- Data minimization principles must be followed
+- Customer consent required before AI processing
+- Data must remain in EU-approved infrastructure (company_name EU Cloud)
+
+==============================================================================
+SECTION 6: SECURE ALTERNATIVES AND REDACTION TOOLS
+==============================================================================
+
+Protocol 6.1: Data Redaction Before External Use
+If an employee has a legitimate need to use external AI for a task involving sensitive data:
+
+STEP 1: Use company_name Data Redaction Tool to automatically remove:
+- Customer names --> [CUSTOMER_NAME]
+- Project codenames --> [PROJECT_X]
+- Revenue figures --> [REVENUE_AMOUNT]
+- Employee names --> [EMPLOYEE_ID]
+
+STEP 2: Verify redaction completeness through the validation dashboard
+
+STEP 3: Only then proceed with external AI tool (with manager approval)
+
+Protocol 6.2: Approved Workflow for Document Analysis
+FOR INTERNAL DOCUMENTS:
+1. Check document classification (Tier 1, 2, or 3)
+2. If Tier 3: Use company_name Secure Copilot ONLY
+3. If Tier 2: Redact any embedded Tier 3 data, then proceed
+4. If Tier 1: External AI use permitted
+
+Protocol 6.3: Emergency Exceptions
+In cases of urgent business need where approved tools are unavailable:
+- Contact IT Security at security@company_name.com
+- Request temporary exception with business justification
+- Use must be logged and audited within 24 hours
+
+==============================================================================
+SECTION 7: COMPLIANCE FRAMEWORKS
+==============================================================================
+
+Protocol 7.1: NIST Cybersecurity Framework Alignment
+company_name aligns with NIST CSF 2.0 core functions:
+- IDENTIFY: Regular data classification audits
+- PROTECT: Encryption and access controls for Tier 3 data
+- DETECT: AI usage monitoring through DLP tools
+- RESPOND: Incident response for data exposure
+- RECOVER: Breach notification protocols
+
+Protocol 7.2: SOC 2 Type II Requirements
+All AI tool usage must maintain:
+- Audit trails and logging
+- Access controls and authentication
+- Data encryption in transit and at rest
+- Regular security assessments
+
+Protocol 7.3: Industry-Specific Regulations
+Financial Services teams must comply with:
+- SEC regulations on material non-public information (MNPI)
+- FINRA rules on electronic communications
+- PCI-DSS for payment card data
+
+==============================================================================
+SECTION 8: MONITORING AND ENFORCEMENT
+==============================================================================
+
+Protocol 8.1: AI Usage Monitoring
+company_name employs DLP (Data Loss Prevention) systems that monitor:
+- Copy-paste activities into browser-based AI tools
+- File uploads to cloud AI services
+- API calls to external LLM providers
+- Unusual data access patterns
+
+Protocol 8.2: Violation Reporting
+Employees who observe policy violations should report to:
+- Email: compliance@company_name.com
+- Anonymous hotline: 1-800-company_name-SEC
+- IT Security Slack channel: #security-reports
+
+Protocol 8.3: Consequences of Non-Compliance
+TIER 1 VIOLATION (Unintentional, low-risk): Mandatory retraining
+TIER 2 VIOLATION (Negligent handling of internal data): Written warning, 30-day probation
+TIER 3 VIOLATION (Intentional exposure of confidential data): Suspension or termination, potential legal action
+
+==============================================================================
+SECTION 9: TRAINING AND AWARENESS
+==============================================================================
+
+Protocol 9.1: Mandatory Training
+All employees must complete:
+- AI Security Awareness Training (annually)
+- Data Classification Workshop (upon hire and annually)
+- Phishing and Social Engineering Training (quarterly)
+
+Protocol 9.2: Policy Updates
+This policy is reviewed quarterly and updated as needed. Employees will be notified of changes via:
+- Email notifications from compliance@company_name.com
+- Mandatory acknowledgment in HR system
+- Policy version posted at https://policies.company_name-internal.com
+
+==============================================================================
+SECTION 10: QUICK REFERENCE DECISION TREE
+==============================================================================
+
+QUESTION: "Can I use [EXTERNAL AI TOOL] for this task?"
+
+STEP 1: What type of data am I using?
+|- Public data (Tier 1) --> YES, proceed
+|- Internal data (Tier 2) --> MAYBE, check for embedded Tier 3 content
+|- Confidential data (Tier 3) --> NO, use company_name Secure Copilot instead
+
+STEP 2: Does the data contain PII, customer info, or proprietary details?
+|- YES --> Use company_name Data Redaction Tool OR company_name Secure Copilot
+|- NO --> Verify with compliance@company_name.com if uncertain
+
+STEP 3: Is there an approved alternative?
+|- company_name Secure Copilot (https://ai.company_name-internal.com)
+|- company_name Data Redaction Tool (https://redact.company_name-internal.com)
+|- Microsoft 365 Copilot (Enterprise tenant only)
+|- If none fit, request exception from IT Security
+
+==============================================================================
+COMMON VIOLATION EXAMPLES AND APPROVED ALTERNATIVES
+==============================================================================
+
+SCENARIO 1: "Can I use ChatGPT to summarize this internal project roadmap?"
+VIOLATION: YES - Protocol 4.2 (Proprietary Data Handling)
+REASON: Project roadmaps are Tier 3 - Confidential
+APPROVED ALTERNATIVE: Use company_name Secure Copilot at https://ai.company_name-internal.com
+
+SCENARIO 2: "Can I paste this customer email into Claude to draft a response?"
+VIOLATION: MAYBE - Depends on content
+IF EMAIL CONTAINS: Customer name, account details, or PII --> Protocol 5.1 Violation
+APPROVED ALTERNATIVE: Use company_name Data Redaction Tool to anonymize, then proceed OR use Microsoft 365 Copilot
+
+SCENARIO 3: "Can I use GitHub Copilot to help debug this authentication module?"
+VIOLATION: YES - Protocol 4.1 (Source Code Protection)
+REASON: Production code with authentication logic is proprietary
+APPROVED ALTERNATIVE: Use company_name DevSecure (GitHub Copilot Enterprise with DLP)
+
+SCENARIO 4: "Can I use Gemini to analyze these public competitor press releases?"
+VIOLATION: NO
+REASON: Publicly available data (Tier 1) is acceptable for external AI use
+APPROVED: YES, proceed (but keep company_name's analysis confidential)
+
+SCENARIO 5: "Can I use ChatGPT to help write a policy document for internal use?"
+VIOLATION: MAYBE - Depends on content
+IF DOCUMENT CONTAINS: Specific company_name processes, security controls, or confidential procedures --> Protocol 4.2 Violation
+APPROVED ALTERNATIVE: Use generic policy framework from external AI, customize internally without uploading company_name-specific details
+
+SCENARIO 6: "Can I upload this financial spreadsheet to Claude for analysis?"
+VIOLATION: YES - Protocol 3.2 (Confidential Data Handling)
+REASON: Financial data is Tier 3 - Confidential
+APPROVED ALTERNATIVE: Use company_name Secure Copilot OR redact all specific figures before external use
+
+==============================================================================
+CONTACT INFORMATION
+==============================================================================
+
+IT Security Team: security@company_name.com | Slack: #it-security
+Compliance Office: compliance@company_name.com | Phone: x5500
+Data Protection Officer: dpo@company_name.com
+AI Governance Committee: aigovernance@company_name.com
+
+Policy Questions: https://policies.company_name-internal.com/aup
+Training Portal: https://training.company_name-internal.com
+
+==============================================================================
+ACKNOWLEDGMENT
+==============================================================================
+
+I acknowledge that I have read, understood, and agree to comply with the company_name Corporation Acceptable Use Policy for AI Systems and Data Handling. I understand that violations may result in disciplinary action up to and including termination of employment.
+
+Employee Signature: _________________________
+Date: _________________________
+Employee ID: _________________________
+
+==============================================================================
+END OF POLICY
+==============================================================================

@@ -1,0 +1,125 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: langflow-data
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: langflow-backend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: { app: langflow-backend }
+  template:
+    metadata:
+      labels: { app: langflow-backend }
+    spec:
+      containers:
+        - name: langflow
+          image: us-central1-docker.pkg.dev/aibm-492318/aibm/langflow-backend:v2
+          ports:
+            - containerPort: 7860
+          env:
+            - name: LANGFLOW_AUTO_LOGIN
+              value: "true"
+            - name: LANGFLOW_LOAD_FLOWS_PATH
+              value: /app/flows
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /var/secrets/google/key.json
+          volumeMounts:
+            - name: gcp-creds
+              mountPath: /var/secrets/google
+              readOnly: true
+            - name: data
+              mountPath: /app/.langflow
+          resources:
+            requests:
+              cpu: "1"
+              memory: 4Gi
+            limits:
+              cpu: "2"
+              memory: 8Gi
+      volumes:
+        - name: gcp-creds
+          secret:
+            secretName: vertex-ai-creds
+        - name: data
+          persistentVolumeClaim:
+            claimName: langflow-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: langflow-backend
+spec:
+  type: ClusterIP
+  selector: { app: langflow-backend }
+  ports:
+    - port: 7860
+      targetPort: 7860
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamlit-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: streamlit-frontend }
+  template:
+    metadata:
+      labels: { app: streamlit-frontend }
+    spec:
+      containers:
+        - name: streamlit
+          image: us-central1-docker.pkg.dev/aibm-492318/aibm/streamlit-frontend:v2
+          ports:
+            - containerPort: 8501
+          env:
+            - name: BASE_API_URL
+              value: http://langflow-backend:7860
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: streamlit-frontend
+spec:
+  type: LoadBalancer
+  selector: { app: streamlit-frontend }
+  ports:
+    - port: 80
+      targetPort: 8501
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: streamlit-frontend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: streamlit-frontend
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
